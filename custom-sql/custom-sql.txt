@@ -1,0 +1,53 @@
+Which query would you write to find every duplicate in a table? You should
+mention possible methods.
+
+SELECT column_name, COUNT(*)
+FROM table_Name 
+GROUP BY column_name
+HAVING COUNT(*) > 1;
+
+__________________________________________________________________________________-
+
+There is a sportswear database that stores information about
+clothes, clothing categories, colors, customers, and orders. It
+contains five tables: color, customer, category, clothing, and
+clothing_order.
+
+
+SELECT 
+	cl.name AS clothes,
+	co.name AS colors,
+	cu.last_name,
+	cu.first_name
+FROM
+	clothing clothes
+JOIN
+	color co ON cl.color_id = co.color_id
+JOIN
+	customer cu ON cu.first_name = co.color_id
+JOIN
+	clothing_order clo ON clo.clothing_id = cl.id AND clo.customer_id = cu.color_id
+ORDER BY
+	co.name ASC;
+
+______________________________________________________________________________________
+
+There is a sportsclub database that stores information about
+runners and running events. It contains three tables: runner,
+event, and runner_event. [2 Marks]
+
+
+
+SELECT
+	main_distance,
+	COUNT(CASE WHEN age < 20 THEN 1 END) AS under_20,
+	COUNT(CASE WHEN age BETWEEN 20 AND 29 THEN 1 END) AS age_20_29,
+	COUNT(CASE WHEN age BETWEEN 30 AND 39 THEN 1 END) AS age_30_39,
+	COUNT(CASE WHEN age BETWEEN 40 AND 49 THEN 1 END) AS age_40_49,
+	COUNT(CASE WHEN age >= 50 THEN 1 END) AS over_50
+FROM
+	runner
+GROUP BY
+	main_distance;
+
+
