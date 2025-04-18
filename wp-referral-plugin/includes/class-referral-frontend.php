@@ -16,7 +16,7 @@ class Referral_Plugin_Frontend
 
 	public function ref_enqueue_scripts(){
 
-		wp_enqueue_script('referal-js',plugin_dir_path(__FILE__).'../assets/js/referral.js',array('jquery'),null,true);
+		wp_enqueue_script('referal-js',plugin_dir_url(__FILE__).'../assets/js/referral.js',array('jquery'),null,true);
 		wp_localize_script('referal-js','refferral_ajax',array('ajax_url' => admin_url('admin-ajax.php')));
 	}
 
